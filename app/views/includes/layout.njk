@@ -88,11 +88,15 @@
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_GB"/>
     <meta property="og:image" content="{% if BASE_URL %}{{ BASE_URL }}{% endif %}{% if pageSection %}/assets/open-graph_{{pageSection | lower | replace(" ", "_") | replace("'", "")}}.png{% else %}/assets/open-graph.png{% endif %}" />
-
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@nhsuk">
     <meta name="twitter:creator" content="@nhsuk">
     <meta name="twitter:image:alt" content="nhs.uk">
+
+    <script>
+      window.NHSUK_SETTINGS = {};
+      window.NHSUK_SETTINGS.USER_FEEDBACK_STORE_ENDPOINT = "{{ USER_FEEDBACK_STORE_ENDPOINT }}";
+    </script>
 
   </head>
 

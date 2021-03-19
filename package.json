@@ -33,6 +33,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@nhsuk/user-feedback-form": "^2.0.0",
     "accessible-autocomplete": "^2.0.3",
     "axios": "^0.21.1",
     "basic-auth": "^2.0.1",

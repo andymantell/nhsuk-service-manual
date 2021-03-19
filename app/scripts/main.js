@@ -8,6 +8,7 @@ import Details from '../../node_modules/nhsuk-frontend/packages/components/detai
 import Checkboxes from '../../node_modules/nhsuk-frontend/packages/components/checkboxes/checkboxes';
 import Radios from '../../node_modules/nhsuk-frontend/packages/components/radios/radios';
 import Card from '../../node_modules/nhsuk-frontend/packages/components/card/card';
+import userFeedbackForm from '@nhsuk/user-feedback-form';
 
 // NHS.UK frontend polyfills
 import '../../node_modules/nhsuk-frontend/packages/polyfills';
@@ -25,28 +26,37 @@ import {
 import './polyfills';
 
 // Initialise NHS.UK frontend components
-AutoComplete({
-  containerId: 'autocomplete-container',
-  formId: 'search',
-  inputId: 'search-field',
-  onConfirm,
-  source,
-  templates: {
-    inputValue,
-    suggestion,
-  },
-});
-MenuToggle();
-SearchToggle();
-Details();
-SkipLink();
-Checkboxes();
-Radios();
-Card();
+document.addEventListener('DOMContentLoaded', () => {
+  AutoComplete({
+    containerId: 'autocomplete-container',
+    formId: 'search',
+    inputId: 'search-field',
+    onConfirm,
+    source,
+    templates: {
+      inputValue,
+      suggestion,
+    },
+  });
+  MenuToggle();
+  SearchToggle();
+  Details();
+  SkipLink();
+  Checkboxes();
+  Radios();
+  Card();
 
-// Initialise NHS digital service manual components
+  // NHS digital user feedback form
+  if(window.NHSUK_SETTINGS.USER_FEEDBACK_STORE_ENDPOINT && document.querySelector("#nhsuk-user-feedback-form")) {
+    userFeedbackForm({
+        formEndpoint: window.NHSUK_SETTINGS.USER_FEEDBACK_STORE_ENDPOINT,
+        enableTextResponse: false,
+    });
+  }
 
-// Design examples
-document.querySelectorAll(DesignExample.selector()).forEach((el) => {
-  new DesignExample(el);
+  // Design examples
+  document.querySelectorAll(DesignExample.selector()).forEach((el) => {
+    new DesignExample(el);
+  });
 });
+

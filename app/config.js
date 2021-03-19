@@ -7,4 +7,7 @@ module.exports = {
 
   // Port to run local development server on
   port: process.env.PORT || 3000,
+
+  userFeedbackStoreEndpoint: process.env.USER_FEEDBACK_STORE_ENDPOINT || 'https://nhsuk-user-feedback-func-prod-uks.azurewebsites.net/',
+
 };
